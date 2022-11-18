@@ -23,7 +23,7 @@
 - [6. Agradecimentos]
 - [7. Contatos]
 
-# 1.Apresentação:
+# Apresentação:
 Somatic Annotator Ensembl Variant Effect Predictor, ou simplesmente SAVEP. É um Pipeline de Bioinformática para anotação de arquivos VCF de variantes somáticas, que utiliza tecnologia da Ensembel Variant Effect Predictor (VEP) em sua versão 105.0 via ambiente nuvem do Google Colab. 
 
 # 1.1. O que é Bioinformática?
