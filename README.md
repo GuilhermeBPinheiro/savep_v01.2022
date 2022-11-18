@@ -165,15 +165,15 @@ drive.mount(‘/my-drive’) #Modificar o caminho entre () e colocar onde deseja
 
 ![image](https://user-images.githubusercontent.com/57289531/202775993-e822aa7a-db17-459c-b418-668d5689ef92.png)
 
-II. Criar Diretórios:
-Antes de mostra os comandos usados dentro do Google Colab para criar diretórios, irei usar esse espaço para explicar um pouco da linguagem Bash e uma lista de comandos básicos que você precisará aprender para aplicar esse Pipe em seu projeto. 
+## II. Criar Diretórios:
+> ### Antes de mostra os comandos usados dentro do Google Colab para criar diretórios, irei usar esse espaço para explicar um pouco da linguagem Bash e uma lista de comandos básicos que você precisará aprender para aplicar esse Pipe em seu projeto. 
  
-**Figura 12. Logo Bash**
+**Figura 12. [Logo Bash](https://pt.wikipedia.org/wiki/Bash)**
 
 ![image](https://user-images.githubusercontent.com/57289531/202775908-33c25371-0344-4dee-bd3e-16a5ec2af65b.png)
 
-GNU Bash ou simplesmente Bash (abreviação de “Bourne Again SHell”) é um shell Unix e um interpretador de linguagem de comando. Um entre os diversos tradutores entre o usuário e o sistema operacional conhecidos como shell. Acrônimo para "Bourne-Again SHell", o Bash é uma evolução retrocompatível muito mais interativa do Bourne Shell. Foi lançado em 8 de junho de 1989 e tem como criador Brian Fox. Fonte: https://pt.wikipedia.org/wiki/Bash.
-Todas as linguagens possui diversos tipos de conceitos, sejam eles variáveis, objetos, tipos de dados, funções, métodos e diversos elementos necessários para sua sintaxe. Em Bash não é muito diferente, possui diversos comandos que tem diferentes funções, tais como: Controle e Acesso / Comunicações / Ajuda e Documentação / entre outros. 
+> ### GNU Bash ou simplesmente Bash (abreviação de “Bourne Again SHell”) é um shell Unix e um interpretador de linguagem de comando. Um entre os diversos tradutores entre o usuário e o sistema operacional conhecidos como shell. Acrônimo para "Bourne-Again SHell", o Bash é uma evolução retrocompatível muito mais interativa do Bourne Shell. Foi lançado em 8 de junho de 1989 e tem como criador Brian Fox.
+> ### Todas as linguagens possui diversos tipos de conceitos, sejam eles variáveis, objetos, tipos de dados, funções, métodos e diversos elementos necessários para sua sintaxe. Em Bash não é muito diferente, possui diversos comandos que tem diferentes funções, tais como: Controle e Acesso / Comunicações / Ajuda e Documentação / entre outros. 
 
 > **Dica #03:**
 >> Caso deseje entender os principais comandos e funções de Bash, recomendarei a leitura no blog [DevMedia](https://www.devmedia.com.br/comandos-importantes-linux/23893)
@@ -272,7 +272,7 @@ mv /content/105.0.tar.gz /content/savep_v01/instalacao
 ![image](https://user-images.githubusercontent.com/57289531/202775335-f2e00da0-8727-4b59-bfc1-3f3f0e8692b0.png)
 
 ## Verificação do VEP - executando o script ./vep
-> ### Entrei dentro do diretório ensembl-vep-105.0 e executei o script ./vep.
+> ### Entrei dentro do diretório ensembl-vep-105.0 e executei o script `./vep`.
 ```
 %%bash
 cd ensembl-vep-105.0/
@@ -326,7 +326,7 @@ Resultado esperado:
 ![image](https://user-images.githubusercontent.com/57289531/202774431-92bfcda8-3829-4705-bd9e-25847b7da776.png)
 
 # Adicionar Arquivos:
-**Formato do Arquivo Input**
+### **Formato do Arquivo Input**
 > ### É possível subir arquivos no formato VCF que conectam o sequenciamento, independentemente da origem do sequenciamento. Arquivos compactados de extensão .gz também são aceitos. 
  
 **Figura 21. Exemplo de Arquivo VCF.**
@@ -380,11 +380,11 @@ O resultado esperado é este:
 ## [Documentação para VEP](http://www.ensembl.org/info/docs/tools/vep/script/vep_download.html#installer)
 
 # Etapa I:
-**Toda o tópico de Introdução**
-Essa etapa pode se resumi praticamente por toda parte anterior de introdução, desde da criação do ambiente, até instalações dos programas e importação dos arquivos, seja o fornecido quanto o que deseja avalia.
+## **Preparação do Ambiente para Receber o arquivo VCF**
+> ### Essa etapa poderia ser resumida por toda parte que está descrito no tópico dee **Introdução**.Desde da criação do ambiente, até instalações dos programas e importação dos arquivos, seja o fornecido quanto o que deseja avaliar.
 
 # Etapa II:
-**Aplicar VEP para filtrar arquivo VCF**
+## **Aplicar VEP para filtrar arquivo VCF**
 >> *Tempo de Instalação: ~6-8 minuto* -> Usando um arquivo VCF que tinha  17.151 variantes (WP312.filtered.vcf.gz)
 ```
 %%bash
@@ -437,9 +437,9 @@ Essa etapa pode se resumi praticamente por toda parte anterior de introdução, 
 ![image](https://user-images.githubusercontent.com/57289531/202773800-c0022ee0-8169-4863-9fcb-8bcd8c6a4b6b.png)
 
 # Etapa III:
-**Gerar uma Tabela com Filtros das Variantes**
+## **Gerar uma Tabela com Filtros das Variantes**
 
-## Aplica um código para gerar a tabela com filtros das variantes do seu arquivo output da etapa anterior:
+> ## Aplica um código para gerar a tabela com filtros das variantes do seu arquivo output da etapa anterior:
 ```
 import pandas as pd
 import csv
@@ -466,6 +466,6 @@ Foi graça ao material de fornecido (fasta) e o comando skiprows (etapa III), qu
 Foi graça a essa incrível profissional e seu projeto nomeado de [vcfannotatoR](https://github.com/XUKEREN/vcfannotatoR) que inspirou em criar esse novo pipeline como alternativa para anotação de variantes somáticas. 
 
 # Contatos
--	Email: gbueno0331@gmail.com
+-	[Email](gbueno0331@gmail.com): gmail.com(gbueno0331@)
 -	[LinkedIn](https://www.linkedin.com/in/guilherme-bueno-a96806192/): guilherme-bueno-a96806192
 -	[Instagram](https://www.instagram.com/gbuen0_/): @gbuen0_
