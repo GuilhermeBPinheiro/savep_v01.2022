@@ -27,15 +27,11 @@
 
 # Apresentação: :dna:
 
----
-
 > ### Somatic Annotator Ensembl Variant Effect Predictor, ou simplesmente SAVEP. É um Pipeline de Bioinformática para anotação de arquivos VCF de variantes somáticas, que utiliza tecnologia da Ensembel Variant Effect Predictor (VEP) em sua versão 105.0 via ambiente nuvem do Google Colab. 
 
 ---
 
 # O que é Bioinformática?
-
----
 
 > ### A ideia de um Pipeline (ou popularmente Pipe) pode ser definida como, uma sequências de etapas a serem executadas desde do um dado bruto até a entrega de um resultado determinado por diversos parâmetros. E, dentro da área de bioinformática, podemos separar 5 (cinco) etapas principais de um Pipe:
 
@@ -87,8 +83,6 @@
 
 # O que são Variantes Somáticas?
 
----
-
 > ### O que diferente variantes somáticas de germinativas é a que estão presentes apenas nas células tumorais e/ou que possui capacidade de oncogênese. Outra diferença é a diferenciação de análises somáticas das germinativas é a forma de classificar as variantes, pelo qual variantes somáticas são classificas com base em seu nível de significância clínica. 
 
 Baseado em seu impacto clínico, classificamos as variantes somáticas em 4 (quatro) categorias:
@@ -109,8 +103,6 @@ Os principais bancos indicados para análise de variantes sómaticas são:
 
 # O que é VEP?
 
----
-
 > ### VEP é uma ferramenta tecnológica com código aberto que é utilizado para realizar anotações e filtragem de variantes genômicas, e prevê consequências moleculares das variantes anotados usando os conjuntos de genes Ensembl/GENCODE ou RefSeq. Possui 3 (três) tipos de interface – cada um com sua documentação e ambiente com foco especifico:
  
 **Figura 6. [Interfaces do VEP](https://www.ensembl.org/info/docs/tools/vep/index.html)**
@@ -124,8 +116,6 @@ Os principais bancos indicados para análise de variantes sómaticas são:
 
 # Objetivo:
 
----
-
 > ### O script SAVEP_v01 se encontra na sua primeira versão e tem como funcionalidade pular algumas etapas de um Pipeline de Bioinformática padrão. Profissionais bioinformatas que possuam documentos pós etapa de Chamada de Variantes possa realizar a etapa de Anotação de Variantes. Esse script funciona com auxílio da ferramenta da VEP – com a interface de trabalho escolhida sendo: command line tool. Para implementar essa interface será utilizado o recurso e tecnologia do Google, denominada de Google Colab  espaço web que garante rodar códigos sem a necessidade de instalar vários pacotes e programas externos.
 
 > **Observações #06:**
@@ -138,9 +128,8 @@ Os principais bancos indicados para análise de variantes sómaticas são:
 
 # Metodologia:
 
----
-
 # Pré-requisitos obrigatórios:
+
 ### - Conexão boa com a internet > *toda execução necessita de uma rede instável, pois a maneira que é feita será totalmente via ambiente nuvem;*
 ### - 	Bom espaço de armazenamento nuvem > *como o ambiente nuvem será utilizado para execução do nosso script, então é bom ter um bom espaço para armazenar os documentos que serão obtidos pós script. Seja esse ambiente sua própria máquina ou espaço compartilhado de seu local de trabalho;*
 ### - 	Paciência > dependendo do tamanho do arquivo a ser estudado, pode demorar alguns minutos a mais, então é necessário ter um pouco de paciência tanto para executar como para ler atentamente cada etapa;*
@@ -150,6 +139,7 @@ Os principais bancos indicados para análise de variantes sómaticas são:
 ### - Adicionar o material fornecido > *alguns arquivos serão fornecidos para que possa rodar o programa em perfeita harmonia, um desses arquivos é o “Genoma de Referência” - no caso disponibilizamos a versão do Homo Sapiens GRCh37 (Homo_sapiens_assembly19.fasta).*
 
 # Pré-requisitos opcionais:
+
 ### - 	Conhecimentos avançados das linguagens > *Python (versão 3) e Bash - caso deseja realizar algumas modificações nesse código livre gratuito para estudos e aperfeiçoamento do programa;*
 ### - Conhecimento de outras linguagens > *R, é um bom exemplo de linguagem principalmente análise de dados;*
 ### - 	Conhecimentos em bancos de dados > *da mesma maneira que seria interessante incrementar uma outra linguagem, aplicar os bancos de dados dessas linguagens, permitiria uma melhor análise.*
@@ -160,8 +150,6 @@ Os principais bancos indicados para análise de variantes sómaticas são:
 ---
 
 # Introdução:
-
----
 
 # Montar o Ambiente de Trabalho:
 
@@ -273,8 +261,6 @@ cd savep_v01 #para entrar nesse diretório e fixar como principal
 
 # Instalar Programas:
 
----
-
 ## IIIa. Instalando VEP ensembl-vep-105.0 - via GitHub
 >> *Tempo de Instalação: ~1 minuto*
 
@@ -342,8 +328,6 @@ Resultado esperado:
 
 # Material Fornecido:
 
----
-
 > ### O [material fornecido](https://drive.google.com/drive/folders/1HPDoDxkeiEJ6F5sGz4Ju4A8w04e3-91o) é graça ao profissional [Renato Puga](https://github.com/renatopuga). 
 ### Use esse link para baixar os seguintes arquivos: 
 ### -	"homo_sapiens_refseq/Homo_sapiens_assembly19.fasta" – contém 2,9 Gg;
@@ -371,7 +355,6 @@ Resultado esperado:
 
 # Adicionar Arquivos:
 
----
 ### **Formato do Arquivo Input**
 > ### É possível subir arquivos no formato VCF que conectam o sequenciamento, independentemente da origem do sequenciamento. Arquivos compactados de extensão .gz também são aceitos. 
  
