@@ -1,68 +1,70 @@
 # **SAVEP_v01.2022**🔬 <!-- omit in toc -->
 
-## Pipeline para Anotação de Arquivo VCF de Variantes Somáticas utilizando o Ensembl Variant Effect Predictor (VEP) version 105.0 via Google Colab. O SAVEP_v01.2022 é de código aberto e está disponível no GitHub.
-*Tempo de duração para rodar o pipeline: ~20-25 minutos* (esse tempo foi estimado com base nos arquivos de exemplo, mas pode sofrer alterações principalmente devido ao tamanho do seu arquivo VCF).
+> ### Pipeline para Anotação de Arquivo VCF de Variantes Somáticas utilizando o Ensembl Variant Effect Predictor (VEP) version 105.0 via Google Colab. O SAVEP_v01.2022 é de código aberto e está disponível no GitHub.
+### *Tempo de duração para rodar o pipeline: ~20-25 minutos* (esse tempo foi estimado com base nos arquivos de exemplo, mas pode sofrer alterações principalmente devido ao tamanho do seu arquivo VCF).
 
-- [1. Apresentação](#apresentação:)
-  - [1.1. O que é Bioinformática?](#o-que-é-bioinformática-?)
-  - [1.2. O que são Variantes Somáticas?]
-  - [1.3. O que é VEP?]
-- [2. Objetivo]
-- [3. Metodologia]
-  - [3.1. Pré-requisitos obrigatórios]
-  - [3.2. Pré-requisitos opcionais]
-- [4. Introdução]
-  - [4.1. Montar o Ambiente de Trabalho]
-  - [4.2. Instalar Programas]
-  - [4.3. Material Fornecido]
-  - [4.4. Adicionar Arquivos]
-- [5. Aplicações]
-  - [5.1. Etapa I]
-  - [5.2. Etapa II]
-  - [5.3. Etapa III]
-- [6. Agradecimentos]
-- [7. Contatos]
+- **[1. Apresentação](#apresentação)**
+  - **[1.1. O que é Bioinformática?](#o-que-é-bioinformática)**
+  - **[1.2. O que são Variantes Somáticas?](#o-que-são-variantes-somáticas)**
+  - **[1.3. O que é VEP?](#o-que-é-vep)**
+- **[2. Objetivo](#objetivo)**
+- **[3. Metodologia](#metodologia)**
+  - **[3.1. Pré-requisitos obrigatórios](#pré-requisitos-obrigatórios)**
+  - **[3.2. Pré-requisitos opcionais](#pré-requisitos-opcionais)**
+- **[4. Introdução](#introdução)**
+  - **[4.1. Montar o Ambiente de Trabalho](#montar-o-ambiente-de-trabalho)**
+  - **[4.2. Instalar Programas](#instalar-programas)**
+  - **[4.3. Material Fornecido](#material-fornecido)**
+  - **[4.4. Adicionar Arquivos](#adicionar-arquivos)**
+- **[5. Aplicações](#aplicações)**
+  - **[5.1. Etapa I](#etapa-i)**
+  - **[5.2. Etapa II](#etapa-ii)**
+  - **[5.3. Etapa III](#etapa-iii)**
+- **[6. Agradecimentos](#agradecimentos)**
+- **[7. Contatos](#contatos)**
 
 # Apresentação:
-Somatic Annotator Ensembl Variant Effect Predictor, ou simplesmente SAVEP. É um Pipeline de Bioinformática para anotação de arquivos VCF de variantes somáticas, que utiliza tecnologia da Ensembel Variant Effect Predictor (VEP) em sua versão 105.0 via ambiente nuvem do Google Colab. 
+> ### Somatic Annotator Ensembl Variant Effect Predictor, ou simplesmente SAVEP. É um Pipeline de Bioinformática para anotação de arquivos VCF de variantes somáticas, que utiliza tecnologia da Ensembel Variant Effect Predictor (VEP) em sua versão 105.0 via ambiente nuvem do Google Colab. 
 
-# 1.1. O que é Bioinformática?
-A ideia de um Pipeline (ou popularmente Pipe) pode ser definida como, uma sequências de etapas a serem executadas desde do um dado bruto até a entrega de um resultado determinado por diversos parâmetros. E, dentro da área de bioinformática, podemos separar 5 (cinco) etapas principais de um Pipe:
+# O que é Bioinformática?
+> ### A ideia de um Pipeline (ou popularmente Pipe) pode ser definida como, uma sequências de etapas a serem executadas desde do um dado bruto até a entrega de um resultado determinado por diversos parâmetros. E, dentro da área de bioinformática, podemos separar 5 (cinco) etapas principais de um Pipe:
 
-A.	Sequenciamento de Nucleotídeos  Sequenciador converter uma amostra de um paciente X em específicos pedaços de pequenas ou longas sequências de nucleotídeos (vai depender da metodologia do sequenciador). Tais informações serão armazenadas em um formato de arquivo em texto denominado FASTQ. Geralmente, possui dois arquivos FASTQ, cada um representa um sentido da linha de DNA.
- 
-Figura 1. FASTQ. Fonte: https://www.drive5.com/usearch/manual/fastq_files.html.
-Observações #01: 
-No arquivo FASTQ, podemos separar o arquivo em 4 linhas obrigatórias, cada um representando uma informação, sendo estas: 1. Identificador de sequência com informações sobre a execução de sequenciamento e o cluster (pode varia de acordo com o software de conversão BCL para FASTQ usado) / 2. A sequência (as chamas de bases; A, C, T, G e N) / 3. Um separador, que é simplesmente um sinal de mais (+) / 4. As pontuações básicas de qualidade da chamada – estes são codificados em Phred+33, usando caracteres ACSII para representar as pontuações de qualidade numérica. 
+### A.	Sequenciamento de Nucleotídeos -> Sequenciador converter uma amostra de um paciente X em específicos pedaços de pequenas ou longas sequências de nucleotídeos (vai depender da metodologia do sequenciador). Tais informações serão armazenadas em um formato de arquivo em texto denominado FASTQ. Geralmente, possui dois arquivos FASTQ, cada um representa um sentido da linha de DNA.
 
-B.	Alinhamento de Nucleotídeos  É feito uma união de todos os sequenciamentos obtidos pelo sequenciador, e para realizar essa etapa é necessário comparar a sequência do paciente com uma sequência de um genoma referência (hg19 ou hg38) para observar seu nível de similaridade. Portanto, nessa etapa um novo formato de arquivo é gerado, um arquivo binário denominado de BAM (Binary Alignment / Map).
+Figura 1. [FASTQ](https://www.drive5.com/usearch/manual/fastq_files.html)
+
+![image](https://user-images.githubusercontent.com/57289531/202767509-0c1ce21f-7f99-4a33-99fd-ccbc886739c6.png)
+
+> Observações #01: 
+>> No arquivo FASTQ, podemos separar o arquivo em 4 linhas obrigatórias, cada um representando uma informação, sendo estas: 1. Identificador de sequência com informações sobre a execução de sequenciamento e o cluster (pode varia de acordo com o software de conversão BCL para FASTQ usado) / 2. A sequência (as chamas de bases; A, C, T, G e N) / 3. Um separador, que é simplesmente um sinal de mais (+) / 4. As pontuações básicas de qualidade da chamada – estes são codificados em Phred+33, usando caracteres ACSII para representar as pontuações de qualidade numérica. 
+
+### B.	Alinhamento de Nucleotídeos -> É feito uma união de todos os sequenciamentos obtidos pelo sequenciador, e para realizar essa etapa é necessário comparar a sequência do paciente com uma sequência de um genoma referência (hg19 ou hg38) para observar seu nível de similaridade. Portanto, nessa etapa um novo formato de arquivo é gerado, um arquivo binário denominado de BAM (Binary Alignment / Map).
+![image](https://user-images.githubusercontent.com/57289531/202768150-8b910fdf-227e-4b72-90ba-65add9182f72.png)
+Figura 2. [BAM](https://en.wikipedia.org/wiki/Binary_Alignment_Map)
 Observações #02: 
 Nos arquivos BAM são adequados para visualização com um visualizador externo, como IGV ou o UCSC Genome Browser. Se você usar um aplicativo no BaseSpace que usa arquivos BAM como entrada, o aplicativo localizará o arquivo ao ser iniciado. Se estiver usando arquivos BAM em outras ferramentas locais, baixe o arquivo para usá-lo na ferramenta externa.
- 
-Figura 2. BAM. Fonte: https://en.wikipedia.org/wiki/Binary_Alignment_Map.
 
-C.	Chamadas de Variantes  Após realizar o alinhamento das sequências, precisa de uma etapa para classificar possíveis variantes gênicas. Estas variantes podem acarretar em mutações benignas (que não causam impacto patogênico) ou malignas (que causam impacto patogênico). Vale ressalta que tem outros parâmetros para determinar o grau de impacto de cada variante individualmente e/ou conjunto dela. Essas variantes podem ser identificadas por SNPs (trocas) ou Indels (deleções ou inserções) de trechos de bases de nucleotídeos. O resultado é um arquivo que contêm apenas essas alterações, um arquivo que possui um formato especifico padrão com cabeçalho e um conjunto de diversas linhas que representa as amostras e questão, esse arquivo é denominado VCF (Variant Call Format). 
+
+### C.	Chamadas de Variantes  Após realizar o alinhamento das sequências, precisa de uma etapa para classificar possíveis variantes gênicas. Estas variantes podem acarretar em mutações benignas (que não causam impacto patogênico) ou malignas (que causam impacto patogênico). Vale ressalta que tem outros parâmetros para determinar o grau de impacto de cada variante individualmente e/ou conjunto dela. Essas variantes podem ser identificadas por SNPs (trocas) ou Indels (deleções ou inserções) de trechos de bases de nucleotídeos. O resultado é um arquivo que contêm apenas essas alterações, um arquivo que possui um formato especifico padrão com cabeçalho e um conjunto de diversas linhas que representa as amostras e questão, esse arquivo é denominado VCF (Variant Call Format). 
 Observações #03: 
 No VCF cada linha representa uma variante detectada, contendo sempre de forma fixa as informações de 8 (oito) colunas: cromossomo / posição / identificador /  alelo referência / alelo alternativo / qualidade / filtro. E pode conter 1 (um) ou mais colunas adicionas, tais como: informações / amostras.
  
 Figura 3. VCF. Fonte: https://en.wikipedia.org/wiki/Variant_Call_Format.
 
-D.	Anotação de Variantes  Após a etapa de chamada de variantes, a etapa subsequente será anotar as variantes, e essa etapa ajudar a enriquecer informações para determinar as variantes, como por exemplo: determinar sua coordenada genômica, a sequência prevista de aminoácidos (p.) e o dano à proteína, qual sua frequência alélica (VAF), com quais doenças se relaciona (OMIM), qual é a sua classificação nos bancos de dados de variantes clínicas (CLINVAR) e nos de predição in sílico (Polyphen entre outros), qual sua frequência populacional, etc. Portanto, é onde iremos aplicar os filtros que farão toda diferença na hora de ver o resultado final. Podemos iniciar essa etapa com mais de 100 variantes e terminar com apenas uma ou duas. Nesta etapa geramos um arquivo no formato de tabela denominado CSV.
+### D.	Anotação de Variantes  Após a etapa de chamada de variantes, a etapa subsequente será anotar as variantes, e essa etapa ajudar a enriquecer informações para determinar as variantes, como por exemplo: determinar sua coordenada genômica, a sequência prevista de aminoácidos (p.) e o dano à proteína, qual sua frequência alélica (VAF), com quais doenças se relaciona (OMIM), qual é a sua classificação nos bancos de dados de variantes clínicas (CLINVAR) e nos de predição in sílico (Polyphen entre outros), qual sua frequência populacional, etc. Portanto, é onde iremos aplicar os filtros que farão toda diferença na hora de ver o resultado final. Podemos iniciar essa etapa com mais de 100 variantes e terminar com apenas uma ou duas. Nesta etapa geramos um arquivo no formato de tabela denominado CSV.
  
 Figura 4. CSV. Fonte: https://colab.research.google.com/drive/1n7o2NFkU5OQnB0aCmLDMVaXKGF3vY_ie#scrollTo=E9Y7CHSdDDLy.
 
-
-E.	Análises de Variantes  É quando iremos classificar as variantes após filtragem e determina o impacto delas conforme as normas de classificação HGVS. É gerada uma lista com apenas algumas poucas variantes identificadas como relevantes para o quadro clínico do paciente. Elas são então novamente analisadas, revisadas e reportadas no laudo para o médico solicitante.
+### E.	Análises de Variantes  É quando iremos classificar as variantes após filtragem e determina o impacto delas conforme as normas de classificação HGVS. É gerada uma lista com apenas algumas poucas variantes identificadas como relevantes para o quadro clínico do paciente. Elas são então novamente analisadas, revisadas e reportadas no laudo para o médico solicitante.
 Observações #04: 
 Ao final da análise, podemos terminar com uma tabela com uma ou duas variantes para laudo do paciente em questão. 
 
-SIMPLIFICAÇÃO DE UM PIPELINE COMPLETO:
+## SIMPLIFICAÇÃO DE UM PIPELINE COMPLETO:
  
 Figura 5. Pipeline Completo. Fonte: https://h600.org/wiki/Sequencing+File+Formats.
 
-# 1.2.	O que são Variantes Somáticas?
-O que diferente variantes somáticas de germinativas é a que estão presentes apenas nas células tumorais e/ou que possui capacidade de oncogênese. Outra diferença é a diferenciação de análises somáticas das germinativas é a forma de classificar as variantes, pelo qual variantes somáticas são classificas com base em seu nível de significância clínica. 
-
+# O que são Variantes Somáticas?
+## O que diferente variantes somáticas de germinativas é a que estão presentes apenas nas células tumorais e/ou que possui capacidade de oncogênese. Outra diferença é a diferenciação de análises somáticas das germinativas é a forma de classificar as variantes, pelo qual variantes somáticas são classificas com base em seu nível de significância clínica. 
 
 Baseado em seu impacto clínico, classificamos as variantes somáticas em 4 (quatro) categorias:
 	TIER I: variantes com forte significância clínica (nível de evidência A e B);
@@ -76,7 +78,7 @@ Os principais bancos indicados para análise de variantes sómaticas são:
 	Varsome: The Human Genomics Community - https://varsome.com/;
 	Franklin by Gennox: The Future of Genomic Medicine - https://franklin.genoox.com/clinical-db/home.
 
-# 1.3.	O que é VEP?
+# O que é VEP?
 VEP é uma ferramenta tecnológica com código aberto que é utilizado para realizar anotações e filtragem de variantes genômicas, e prevê consequências moleculares das variantes anotados usando os conjuntos de genes Ensembl/GENCODE ou RefSeq.
 Possui 3 (três) tipos de interface – cada um com sua documentação e ambiente com foco especifico:
  
@@ -84,32 +86,33 @@ Figura 6. Interfaces do VEP. Fonte: https://www.ensembl.org/info/docs/tools/vep/
 Observações #05: 
 Usaremos nesse Pipeline a interface Command line tool do VEP.
 
-# 2. Objetivo:
+# Objetivo:
 O script SAVEP_v01 se encontra na sua primeira versão e tem como funcionalidade pular algumas etapas de um Pipeline de Bioinformática padrão. Profissionais bioinformatas que possuam documentos pós etapa de Chamada de Variantes possa realizar a etapa de Anotação de Variantes. Esse script funciona com auxílio da ferramenta da VEP – com a interface de trabalho escolhida sendo: command line tool. Para implementar essa interface será utilizado o recurso e tecnologia do Google, denominada de Google Colab  espaço web que garante rodar códigos sem a necessidade de instalar vários pacotes e programas externos.
 Observações #06: 
 O ANNOVAR é a principal ferramenta utilizada aqui para converter o arquivo BAM em VCF. Mas, uma alternativa para essa ferramenta que é bem utilizada, é justamente o VEP. 
 Dica #01:
 Para entender as diferenças e semelhanças entre softwares de anotações de variantes, recomendo a leitura de um arquivo publicado no blog The Golden Helix sobre o assunto. Disponível em: https://blog.goldenhelix.com/the-sate-of-variant-annotation-a-comparison-of-annovar-snpeff-and-vep/.
 
-# 3. Metodologia:
-# 3.1. Pré-requisitos obrigatórios:
+# Metodologia:
+# Pré-requisitos obrigatórios:
 •	Conexão boa com a internet  toda execução necessita de uma rede instável, pois a maneira que é feita será totalmente via ambiente nuvem;
 •	Bom espaço de armazenamento nuvem   como o ambiente nuvem será utilizado para execução do nosso script, então é bom ter um bom espaço para armazenar os documentos que serão obtidos pós script. Seja esse ambiente sua própria máquina ou espaço compartilhado de seu local de trabalho;
 •	Paciência  dependendo do tamanho do arquivo a ser estudado, pode demorar alguns minutos a mais, então é necessário ter um pouco de paciência tanto para executar como para ler atentamente cada etapa;
-
 •	Conhecimentos básicos das linguagens: Python (versão 3) e Bash  alguns comandos básicos de ambas as linguagens serão utilizadas, caso deseje formatar e adicionar requisitos a mais, será necessário algum conhecimento mais avançado, porém para realização e execução de nosso script, todos os comandos estarão disponível;
 •	Bibliotecas Python: Pandas  biblioteca de software criada para a linguagem Python para manipulação e análise de dados. Em particular, oferece estruturas e operações para manipular tabelas numéricas e séries temporais;
 •	Ter uma conta no Google Colab  escolhido por não necessitar de programas extras para instalação, apenas linhas de códigos para sua execução;
 •	Adicionar o material fornecido  alguns arquivos serão fornecidos para que possa rodar o programa em perfeita harmonia, um desses arquivos é o “Genoma de Referência” - no caso disponibilizamos a versão do Homo Sapiens GRCh37 (Homo_sapiens_assembly19.fasta).
 
-# 3.2. Pré-requisitos opcionais:
+# Pré-requisitos opcionais:
 •	Conhecimentos avançados das linguagens  Python (versão 3) e Bash  caso deseja realizar algumas modificações nesse código livre gratuito para estudos e aperfeiçoamento do programa;
 •	Conhecimento de outras linguagens  R, é um bom exemplo de linguagem principalmente análise de dados;
 •	Conhecimentos em bancos de dados  da mesma maneira que seria interessante incrementar uma outra linguagem, aplicar os bancos de dados dessas linguagens, permitiria uma melhor análise.
 Dica #02:
 Caso deseje entender comandos mais avançados de linguagem, recomendarei a documentação de ambas as linguagens utilizadas nesse script: Python3 e Bash. Disponível em: https://docs.python.org/3/ e https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html.
-# 4. Introdução:
-# 4.1. Montar o Ambiente de Trabalho:
+
+# Introdução:
+
+# Montar o Ambiente de Trabalho:
 I. Criar conta no Google Colab:
 Começa criando uma conta no Google Colab (https://colab.research.google.com/). Após criado o Colab, crie um “novo notebook” e der dois cliques no título, onde estará escrito “Untitled1.ipynb”, e renomeei como desejar (recomendo colocar nome do nosso script + _ + seu nome). A tela inicial do Colab apareça conforme mostrado na figura abaixo:
  
@@ -190,7 +193,7 @@ Mova os diretórios para dentro do drive utilizando o comando mv + nomes_direito
 Dica #03:
 Há uma outra maneira de criar diretórios sem usar linhas de códigos. Seria indo diretamente no seu Google Drive e criando pasta diretamente lá. Conseguiria renomear, colocar arquivos, mover, excluir e tudo mais, basicamente poderia criar todo ambiente antes e após conectar seu Drive no Colab, todo seu ambiente estaria presente na aba “Arquivos”.  
 
-# 4.2. Instalar Programas:
+# Instalar Programas:
 IIIa. Instalando VEP ensembl-vep-105.0 - via GitHub
 Tempo de Instalação: ~1 minuto
 A versão escolhida para ser utilizada é 105.0. No GitHub possui uma região que possui todos os repositório, vai possui não apenas da versão 105.0 do VEP, mas de todas as versões que já foram lançadas.
@@ -232,7 +235,7 @@ Resultado esperado:
  
 Figura 17. Tela de Instalação Concluída do Panda. Fonte: https://colab.research.google.com/.
 
-# 4.3. Material Fornecido:
+# Material Fornecido:
 O material fornecido é graça ao profissional Renato Puga (link do GitHub dele). Disponível no link: https://drive.google.com/drive/folders/1s_UInfwIbATc8qEw4pBbT5w-Tdb9P2MF. 
 Use esse link para baixar os seguintes arquivos: 
 	"homo_sapiens_refseq/Homo_sapiens_assembly19.fasta" – contém 2,9 Gg;
@@ -250,8 +253,8 @@ O resultado esperado ao fim de tudo:
  
 Figura 20. Arquivo Fasta no Colab. 
 
-# 4.4. Adicionar Arquivos Input:
-Formato do Arquivo:
+# Adicionar Arquivos:
+**Formato do Arquivo Input**
 É possível subir arquivos no formato VCF que conectam o sequenciamento, independentemente da origem do sequenciamento. Arquivos compactados de extensão .gz também são aceitos. 
  
 Figura 21. Exemplo de Arquivo VCF. 
@@ -283,14 +286,16 @@ Caso tenha seguido as Dicas #03, #04 e #05, seu drive estará semelhante a figur
  
 Figura 25. Tela do Drive com suas pastas e arquivos já inseridos. Fonte: https://drive.google.com/drive/folders/.
 
-# 5. Aplicações:
+# Aplicações:
 Documentação para VEP
 Disponível em: http://www.ensembl.org/info/docs/tools/vep/script/vep_download.html#installer.
 
-# 5.1. Etapa I – Toda o tópico de Introdução
+# Etapa I:
+**Toda o tópico de Introdução**
 Essa etapa pode se resumi praticamente por toda parte anterior de introdução, desde da criação do ambiente, até instalações dos programas e importação dos arquivos, seja o fornecido quanto o que deseja avalia.
 
-# 5.2. Etapa II – Aplicar VEP para filtrar arquivo VCF
+# Etapa II:
+**Aplicar VEP para filtrar arquivo VCF**
 Tempo de Instalação: ~6-8 minuto  Usando um arquivo VCF que tinha  17.151 variantes (WP312.filtered.vcf.gz)
 %%bash
 ./ensembl-vep-105.0/vep  \ #Ativa o programa ensembl-vep-105.0
@@ -334,7 +339,9 @@ Resultado esperado:
  
 Figura 26. Arquivo VCF pós VEP 
 
-# 5.2. Etapa III – Gerar uma Tabela com Filtros das Variantes
+# Etapa III:
+**Gerar uma Tabela com Filtros das Variantes**
+
 Aplica um código para gerar a tabela com filtros das variantes do seu arquivo output da etapa anterior. 
 import pandas as pd
 import csv
@@ -348,13 +355,13 @@ Exemplo:
  
 Figura 27. Arquivo final com FIltros
 
-# 6. Agradecimentos:
+# Agradecimentos:
 Renato Puga (Acessem seu perfil: https://github.com/renatopuga)
 Foi graça ao material de fornecido (fasta) e o comando skiprows (etapa III), que ajudou na construção de Pipeline. Além de todo suporte e conhecimento trocado. É um excelente profissional e tem todo meu respeito!
 Keren Xu (Acessem seu perfil: https://github.com/XUKEREN) 
 Foi graça a essa incrível profissional e seu projeto nomeado de “vcfannotatoR” (https://github.com/XUKEREN/vcfannotatoR) que inspirou em criar esse novo pipeline como alternativa para anotação de variantes somáticas. 
 
-# 7. Contato
+# Contatos
 	Email: gbueno0331@gmail.com
 	LinkedIn: linkedin.com/in/guilherme-bueno-a96806192/
 	Instagram: @gbuen0_
