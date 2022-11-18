@@ -1,4 +1,5 @@
 # **SAVEP_v01.2022**🔬 <!-- omit in toc -->
+![Badge em Desenvolvimento](https://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=<GREEN>)
 
 > ### Pipeline para Anotação de Arquivo VCF de Variantes Somáticas utilizando o Ensembl Variant Effect Predictor (VEP) version 105.0 via Google Colab. O SAVEP_v01.2022 é de código aberto e está disponível no GitHub.
 >> *Tempo de duração para rodar o pipeline: ~20-25 minutos* (esse tempo foi estimado com base nos arquivos de exemplo, mas pode sofrer alterações principalmente devido ao tamanho do seu arquivo VCF).
