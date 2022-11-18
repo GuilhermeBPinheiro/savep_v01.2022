@@ -23,10 +23,20 @@
 - **[6. Agradecimentos](#agradecimentos)**
 - **[7. Contatos](#contatos)**
 
-# Apresentação:
+---
+
+# Apresentação: :dna:
+
+---
+
 > ### Somatic Annotator Ensembl Variant Effect Predictor, ou simplesmente SAVEP. É um Pipeline de Bioinformática para anotação de arquivos VCF de variantes somáticas, que utiliza tecnologia da Ensembel Variant Effect Predictor (VEP) em sua versão 105.0 via ambiente nuvem do Google Colab. 
 
+---
+
 # O que é Bioinformática?
+
+---
+
 > ### A ideia de um Pipeline (ou popularmente Pipe) pode ser definida como, uma sequências de etapas a serem executadas desde do um dado bruto até a entrega de um resultado determinado por diversos parâmetros. E, dentro da área de bioinformática, podemos separar 5 (cinco) etapas principais de um Pipe:
 
 ### A.	Sequenciamento de Nucleotídeos -> Sequenciador converter uma amostra de um paciente X em específicos pedaços de pequenas ou longas sequências de nucleotídeos (vai depender da metodologia do sequenciador). Tais informações serão armazenadas em um formato de arquivo em texto denominado FASTQ. Geralmente, possui dois arquivos FASTQ, cada um representa um sentido da linha de DNA.
@@ -73,7 +83,12 @@
 
 ![image](https://user-images.githubusercontent.com/57289531/202771460-4af377cf-95f1-416d-986a-e7c1b0c66331.png)
 
+---
+
 # O que são Variantes Somáticas?
+
+---
+
 > ### O que diferente variantes somáticas de germinativas é a que estão presentes apenas nas células tumorais e/ou que possui capacidade de oncogênese. Outra diferença é a diferenciação de análises somáticas das germinativas é a forma de classificar as variantes, pelo qual variantes somáticas são classificas com base em seu nível de significância clínica. 
 
 Baseado em seu impacto clínico, classificamos as variantes somáticas em 4 (quatro) categorias:
@@ -90,7 +105,12 @@ Os principais bancos indicados para análise de variantes sómaticas são:
 •	[Varsome: The Human Genomics Community](https://varsome.com/)
 •	[Franklin by Gennox: The Future of Genomic Medicine](https://franklin.genoox.com/clinical-db/home)
 
+---
+
 # O que é VEP?
+
+---
+
 > ### VEP é uma ferramenta tecnológica com código aberto que é utilizado para realizar anotações e filtragem de variantes genômicas, e prevê consequências moleculares das variantes anotados usando os conjuntos de genes Ensembl/GENCODE ou RefSeq. Possui 3 (três) tipos de interface – cada um com sua documentação e ambiente com foco especifico:
  
 **Figura 6. [Interfaces do VEP](https://www.ensembl.org/info/docs/tools/vep/index.html)**
@@ -100,7 +120,12 @@ Os principais bancos indicados para análise de variantes sómaticas são:
 > **Observações #05:**
 >> Usaremos nesse Pipeline a interface Command line tool do VEP.
 
+---
+
 # Objetivo:
+
+---
+
 > ### O script SAVEP_v01 se encontra na sua primeira versão e tem como funcionalidade pular algumas etapas de um Pipeline de Bioinformática padrão. Profissionais bioinformatas que possuam documentos pós etapa de Chamada de Variantes possa realizar a etapa de Anotação de Variantes. Esse script funciona com auxílio da ferramenta da VEP – com a interface de trabalho escolhida sendo: command line tool. Para implementar essa interface será utilizado o recurso e tecnologia do Google, denominada de Google Colab  espaço web que garante rodar códigos sem a necessidade de instalar vários pacotes e programas externos.
 
 > **Observações #06:**
@@ -109,7 +134,11 @@ Os principais bancos indicados para análise de variantes sómaticas são:
 > **Dica #01:**
 >> Para entender as diferenças e semelhanças entre softwares de anotações de variantes, recomendo a leitura de um arquivo publicado no [blog The Golden Helix](https://blog.goldenhelix.com/the-sate-of-variant-annotation-a-comparison-of-annovar-snpeff-and-vep/) sobre o assunto. 
 
+---
+
 # Metodologia:
+
+---
 
 # Pré-requisitos obrigatórios:
 ### - Conexão boa com a internet > *toda execução necessita de uma rede instável, pois a maneira que é feita será totalmente via ambiente nuvem;*
@@ -128,7 +157,11 @@ Os principais bancos indicados para análise de variantes sómaticas são:
 > **Dica #02:**
 >> Caso deseje entender comandos mais avançados de linguagem, recomendarei a documentação de ambas as linguagens utilizadas nesse script: [Python3]( https://docs.python.org/3/) e [Bash](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html). 
 
+---
+
 # Introdução:
+
+---
 
 # Montar o Ambiente de Trabalho:
 
@@ -236,7 +269,11 @@ cd savep_v01 #para entrar nesse diretório e fixar como principal
 > **Dica #04:**
 >> Há uma outra maneira de criar diretórios sem usar linhas de códigos. Seria indo diretamente no seu Google Drive e criando pasta diretamente lá. Conseguiria renomear, colocar arquivos, mover, excluir e tudo mais, basicamente poderia criar todo ambiente antes e após conectar seu Drive no Colab, todo seu ambiente estaria presente na aba “Arquivos”.  
 
+---
+
 # Instalar Programas:
+
+---
 
 ## IIIa. Instalando VEP ensembl-vep-105.0 - via GitHub
 >> *Tempo de Instalação: ~1 minuto*
@@ -260,7 +297,7 @@ mv instalacao savep_v01 #mover diretório para dentro do diretório principal
 cd savep_v01 #para entrar nesse diretório e fixar como principal
 ```
 
-### Mover o arquivo
+### Mover o arquivo:
 ```
 mv /content/105.0.tar.gz /content/savep_v01/instalacao
 ```
@@ -271,7 +308,7 @@ mv /content/105.0.tar.gz /content/savep_v01/instalacao
 
 ![image](https://user-images.githubusercontent.com/57289531/202775335-f2e00da0-8727-4b59-bfc1-3f3f0e8692b0.png)
 
-## Verificação do VEP - executando o script ./vep
+## Verificação do VEP - executando o script ./vep:
 > ### Entrei dentro do diretório ensembl-vep-105.0 e executei o script `./vep`.
 ```
 %%bash
@@ -288,7 +325,7 @@ cd ensembl-vep-105.0/
 ## IIIB. Instalando biblioteca Pandas
 >> *Tempo de Instalação: ~30 segundos*
 
-Use a linha de código para instalação:
+### Use a linha de código para instalação:
 ```
 !pip install pandas
 ```
@@ -301,7 +338,12 @@ Resultado esperado:
 
 ![image](https://user-images.githubusercontent.com/57289531/202774909-f3c6808b-9732-47a5-9325-cb0b2fd8cd4b.png)
 
+---
+
 # Material Fornecido:
+
+---
+
 > ### O [material fornecido](https://drive.google.com/drive/folders/1HPDoDxkeiEJ6F5sGz4Ju4A8w04e3-91o) é graça ao profissional [Renato Puga](https://github.com/renatopuga). 
 ### Use esse link para baixar os seguintes arquivos: 
 ### -	"homo_sapiens_refseq/Homo_sapiens_assembly19.fasta" – contém 2,9 Gg;
@@ -325,7 +367,11 @@ Resultado esperado:
 
 ![image](https://user-images.githubusercontent.com/57289531/202774431-92bfcda8-3829-4705-bd9e-25847b7da776.png)
 
+---
+
 # Adicionar Arquivos:
+
+---
 ### **Formato do Arquivo Input**
 > ### É possível subir arquivos no formato VCF que conectam o sequenciamento, independentemente da origem do sequenciamento. Arquivos compactados de extensão .gz também são aceitos. 
  
@@ -337,6 +383,7 @@ Resultado esperado:
 >> Qualquer arquivo VCF que se encaixe no modelo acima que esteja na sua máquina, você pode utilizar.
 
 ## Para adicionar o arquivo no seu script, possui duas possibilidades:
+
 > ### Opção A – utilize o seguinte comando:
 ```
 from google.colab import files
@@ -376,15 +423,21 @@ O resultado esperado é este:
 
 ![image](https://user-images.githubusercontent.com/57289531/202773928-df20e123-d965-4577-acfb-ce782153cb85.png)
 
-# Aplicações:
+---
+
+# Aplicações: 💻
 ## [Documentação para VEP](http://www.ensembl.org/info/docs/tools/vep/script/vep_download.html#installer)
+
+---
 
 # Etapa I:
 ## **Preparação do Ambiente para Receber o arquivo VCF**
 > ### Essa etapa poderia ser resumida por toda parte que está descrito no tópico dee **Introdução**.Desde da criação do ambiente, até instalações dos programas e importação dos arquivos, seja o fornecido quanto o que deseja avaliar.
 
+---
+
 # Etapa II:
-## **Aplicar VEP para filtrar arquivo VCF**
+## **Aplicar VEP para filtrar arquivo VCF:**
 >> *Tempo de Instalação: ~6-8 minuto* -> Usando um arquivo VCF que tinha  17.151 variantes (WP312.filtered.vcf.gz)
 ```
 %%bash
@@ -436,6 +489,8 @@ O resultado esperado é este:
 
 ![image](https://user-images.githubusercontent.com/57289531/202773800-c0022ee0-8169-4863-9fcb-8bcd8c6a4b6b.png)
 
+---
+
 # Etapa III:
 ## **Gerar uma Tabela com Filtros das Variantes**
 
@@ -457,6 +512,7 @@ df
 
 ![image](https://user-images.githubusercontent.com/57289531/202773689-f1c61e37-8ab1-4ad7-ae34-9b986fec6e22.png)
 
+---
 
 # Agradecimentos:
 - [Renato Puga](https://github.com/renatopuga)
@@ -464,6 +520,8 @@ Foi graça ao material de fornecido (fasta) e o comando skiprows (etapa III), qu
 
 - [Keren Xu](https://github.com/XUKEREN) 
 Foi graça a essa incrível profissional e seu projeto nomeado de [vcfannotatoR](https://github.com/XUKEREN/vcfannotatoR) que inspirou em criar esse novo pipeline como alternativa para anotação de variantes somáticas. 
+
+---
 
 # Contatos
 -	[Email](gbueno0331@gmail.com): gmail.com(gbueno0331@)
