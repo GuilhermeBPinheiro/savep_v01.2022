@@ -3,8 +3,8 @@
 ## Pipeline para Anotação de Arquivo VCF de Variantes Somáticas utilizando o Ensembl Variant Effect Predictor (VEP) version 105.0 via Google Colab. O SAVEP_v01.2022 é de código aberto e está disponível no GitHub.
 *Tempo de duração para rodar o pipeline: ~20-25 minutos* (esse tempo foi estimado com base nos arquivos de exemplo, mas pode sofrer alterações principalmente devido ao tamanho do seu arquivo VCF).
 
-- [1. Apresentação](#1.apresentação:)
-  - [1.1. O que é Bioinformática?](#1.1.o-que-é-bioinformática-?)
+- [1. Apresentação](# 1.apresentação:)
+  - [1.1. O que é Bioinformática?](# 1.1.o-que-é-bioinformática-?)
   - [1.2. O que são Variantes Somáticas?]
   - [1.3. O que é VEP?]
 - [2. Objetivo]
